@@ -56,20 +56,20 @@ console.log("Result saved!");
 }
  
  
- function finish(timedOut){
+ async function finish(timedOut){
  if(timer){clearInterval(timer);timer=null}
  var elapsed=Math.min((Date.now()-startAt)/1000,60),score=0;
  qs.forEach(function(q,i){if(answers[i]===q.c)score++});
 
- saveResult({
+ await saveResult({
 username: username,
 score: score,
 time: Number(elapsed.toFixed(2)),
 submitted_at: new Date().toISOString(),
 timed_out: timedOut
 });
- 
- el("doneNote").textContent="Result saved for "+username+".";show("doneCard")
+
+el("doneNote").textContent="Result saved for "+username;".";show("doneCard")
 }
 function admin(){
     window.location.href="/tacocat/admin/";
