@@ -58,12 +58,31 @@ button{min-height:48px;border:0;border-radius:12px;padding:12px 14px;font-weight
 "use strict";
 var KEY="tacocat_practice_results_v2",CODE="TEST60";
 function el(id){return document.getElementById(id)}
-function read(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
-function write(x){localStorage.setItem(KEY,JSON.stringify(x))}
-function ranked(){return read().sort(function(a,b){return b.score-a.score||a.time-b.time||new Date(a.submittedAt)-new Date(b.submittedAt)})}
-function draw(){
- var d=ranked();el("count").textContent=d.length;el("fastest").textContent=d.length?Math.min.apply(null,d.map(function(x){return x.time})).toFixed(2)+"s":"—";
- var html="";d.forEach(function(r,i){html+="<tr><td>#"+(i+1)+"</td><td>"+safe(r.username)+"</td><td><strong>"+r.score+"/10</strong></td><td>"+r.time.toFixed(2)+"s</td><td>"+new Date(r.submittedAt).toLocaleString()+"</td></tr>"});
+
+async function read(){
+
+const {data,error}=await supabaseClient
+.from("quiz_results")
+.select("*")
+.order("score",{ascending:false});
+
+
+if(error){
+console.error(error);
+alert("Could not load results.");
+return [];
+}
+
+
+return data;
+
+}
+
+  
+  async function draw(){
+var d=await read();
+el("count").textContent=d.length;el("fastest").textContent=d.length?Math.min.apply(null,d.map(function(x){return x.time})).toFixed(2)+"s":"—";
+ var html="";d.forEach(function(r,i){html+="<tr><td>#"+(i+1)+"</td><td>"+safe(r.username)+"</td><td><strong>"+r.score+"/10</strong></td><td>"+r.time.toFixed(2)+"s</td><td>"+new Date(r.submitted_at).toLocaleString()+"</td></tr>"});
  el("rows").innerHTML=html||'<tr><td colspan="5">No results yet.</td></tr>'
 }
 function safe(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]})}
@@ -72,10 +91,26 @@ function exportCsv(){var d=ranked();if(!d.length){alert("No results to export.")
 el("loginBtn").addEventListener("click",login);
 el("backBtn").addEventListener("click",function(){window.location.href="../"});
 el("logoutBtn").addEventListener("click",function(){el("dashboard").classList.add("hidden");el("login").classList.remove("hidden");el("code").value=""});
-el("sampleBtn").addEventListener("click",function(){var d=read(),n=["Pilot","Shadow","Explorer"],s=[9,10,8],t=[42.1,38.8,47.5];for(var i=0;i<n.length;i++)d.push({id:Date.now()+i,username:n[i],score:s[i],time:t[i],submittedAt:new Date(Date.now()-i*60000).toISOString(),timedOut:false});write(d);draw()});
 el("exportBtn").addEventListener("click",exportCsv);
-el("clearBtn").addEventListener("click",function(){if(confirm("Clear every practice result?")){localStorage.removeItem(KEY);draw()}});
-})();
+el("clearBtn").addEventListener("click",async function(){
+
+if(confirm("Clear every practice result?")){
+
+const {error}=await supabaseClient
+.from("quiz_results")
+.delete()
+.gte("id",0);
+
+
+if(error){
+console.error(error);
+}
+
+draw();
+
+}
+
+});})();
 </script>
 </body>
 </html>
