@@ -7,23 +7,25 @@ title: Home
 
 <div class="hero-title">
 
-# THE SIGNAL WAS RECEIVED
+<h1>THE SIGNAL WAS RECEIVED</h1>
 
 </div>
 
 <div class="hero-scroll">
 
-## Transmission Log
+<h2>Transmission Log</h2>
 
+<p>
 The signal has arrived...
-
+<br><br>
 One taco.
-
+<br>
 One cat.
-
+<br>
 One mission.
-
+<br><br>
 Soon the adventure begins.
+</p>
 
 </div>
 
@@ -31,7 +33,7 @@ Soon the adventure begins.
 
 <section class="story">
 
-# The Story So Far
+<h1>The Story So Far</h1>
 
 <div class="chapter-grid">
 
@@ -49,9 +51,9 @@ Soon the adventure begins.
 
 <section class="gallery">
 
-# Meme Gallery
+<h1>Meme Gallery</h1>
 
-### The Funniest Tacos in the Universe
+<h3>The Funniest Tacos in the Universe</h3>
 
 <div class="meme-grid">
 
@@ -73,9 +75,9 @@ Soon the adventure begins.
 
 <section class="crew">
 
-# Meet the Taco Crew
+<h1>Meet the Taco Crew</h1>
 
-### A Crew of Misfits. One Mission.
+<h3>A Crew of Misfits. One Mission.</h3>
 
 <div class="crew-grid">
 
@@ -96,10 +98,10 @@ Soon the adventure begins.
 </section>
 
 <section class="behind">
+  
+<h1>Behind the Scenes</h1>
 
-# Behind the Scenes
-
-### Building the Universe One Taco at a Time
+<h3>Building the Universe One Taco at a Time</h3>
 
 <div class="behind-box">
 
@@ -127,7 +129,7 @@ Introduce the creators.
 
 <section class="quiz">
 
-# TacoCat Practice Quiz
+<h1>TacoCat Practice Quiz</h1>
 
 <div class="wrap">
 
