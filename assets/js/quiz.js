@@ -37,7 +37,26 @@ function render(){
  el("options").appendChild(b)})
 }
 function next(){if(!answers[index])return;if(index===9)finish(false);else{index++;render()}}
-function finish(timedOut){
+
+ async function saveResult(result){
+
+const {data,error}=await supabaseClient
+.from("quiz_results")
+.insert([result]);
+
+
+if(error){
+console.error(error);
+alert("Could not save result.");
+}
+else{
+console.log("Result saved!");
+}
+
+}
+ 
+ 
+ function finish(timedOut){
  if(timer){clearInterval(timer);timer=null}
  var elapsed=Math.min((Date.now()-startAt)/1000,60),score=0;
  qs.forEach(function(q,i){if(answers[i]===q.c)score++});
