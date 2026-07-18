@@ -41,7 +41,15 @@ function finish(timedOut){
  if(timer){clearInterval(timer);timer=null}
  var elapsed=Math.min((Date.now()-startAt)/1000,60),score=0;
  qs.forEach(function(q,i){if(answers[i]===q.c)score++});
- var rows=read();rows.push({id:Date.now()+Math.random(),username:username,score:score,time:Number(elapsed.toFixed(2)),submittedAt:new Date().toISOString(),timedOut:timedOut});write(rows);
+
+ saveResult({
+username: username,
+score: score,
+time: Number(elapsed.toFixed(2)),
+submitted_at: new Date().toISOString(),
+timed_out: timedOut
+});
+ 
  el("doneNote").textContent="Result saved for "+username+".";show("doneCard")
 }
 function admin(){
