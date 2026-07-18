@@ -44,7 +44,9 @@ function finish(timedOut){
  var rows=read();rows.push({id:Date.now()+Math.random(),username:username,score:score,time:Number(elapsed.toFixed(2)),submittedAt:new Date().toISOString(),timedOut:timedOut});write(rows);
  el("doneNote").textContent="Result saved for "+username+".";show("doneCard")
 }
-function admin(){window.location.href="./admin/"}
+function admin(){
+    window.location.href="/tacocat/admin/";
+}
 el("startBtn").addEventListener("click",begin);
 el("nextBtn").addEventListener("click",next);
 el("againBtn").addEventListener("click",function(){el("username").value="";show("startCard")});
