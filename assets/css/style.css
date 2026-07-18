@@ -36,7 +36,10 @@ padding:120px 0;
 
 .hero{
 
-height:100vh;
+max-width:1200px;
+margin:0 auto;
+
+min-height:100vh;
 
 display:grid;
 
@@ -45,6 +48,8 @@ grid-template-columns:1fr 1fr;
 align-items:center;
 
 gap:80px;
+
+padding:0 40px;
 
 }
 
@@ -231,5 +236,71 @@ color:black;
 font-size:1.2rem;
 
 line-height:2;
+
+}
+
+/* ---------- SECTION BACKGROUNDS ---------- */
+
+.story{
+background:rgba(10,15,30,.80);
+}
+
+.gallery{
+background:rgba(18,25,45,.88);
+}
+
+.crew{
+background:rgba(10,15,30,.80);
+}
+
+.quiz{
+background:rgba(18,25,45,.88);
+}
+
+.behind{
+background:rgba(10,15,30,.80);
+}
+
+/* ---------- SECTION TITLES ---------- */
+
+section h1{
+
+font-size:3rem;
+
+text-align:center;
+
+letter-spacing:5px;
+
+text-transform:uppercase;
+
+margin-bottom:20px;
+
+}
+
+section h1::after{
+
+content:"";
+
+display:block;
+
+width:120px;
+
+height:3px;
+
+background:#6de7ba;
+
+margin:20px auto;
+
+}
+
+section h3{
+
+text-align:center;
+
+font-weight:normal;
+
+color:#c7d4ff;
+
+margin-bottom:60px;
 
 }
