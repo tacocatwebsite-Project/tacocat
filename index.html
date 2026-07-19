@@ -8,74 +8,45 @@
   <link rel="stylesheet" href="./assets/css/quiz.css">
 </head>
 <body>
-  <div class="brand-corner" aria-label="TacoCat">
-    <div class="brand-logo" aria-hidden="true">
-      <span class="taco">🌮</span>
-      <span class="cat">🐱</span>
-    </div>
-    <div class="brand-copy">
-      <strong>TACOCAT</strong>
-      <small>THE SIGNAL IS REAL</small>
-    </div>
-  </div>
+  <img class="corner-logo" src="./assets/images/tacocat-logo.png" alt="TacoCat Crew logo">
 
   <main class="wrap">
     <section id="startCard" class="card">
-      <div class="hero-mark" aria-hidden="true">◉ SIGNAL ONLINE</div>
+      <div class="signal-label">TACO CREW ACADEMY</div>
       <h1>TacoCat Practice Quiz</h1>
       <p class="subtitle">Can you become the #1 Signal Hunter?</p>
 
-      <div class="mission-stats" aria-label="Quiz information">
+      <div class="mission-stats">
         <span>⏱ 60 Seconds</span>
         <span>❓ 10 Questions</span>
         <span>🏆 Top Score Wins</span>
       </div>
 
       <label for="username">Username</label>
-      <input
-        id="username"
-        name="username"
-        type="text"
-        minlength="2"
-        maxlength="50"
-        autocomplete="nickname"
-        placeholder="Enter your username"
-      >
+      <input id="username" name="username" type="text" minlength="2" maxlength="50" autocomplete="nickname" placeholder="Enter your username">
 
       <button id="startBtn" class="primary gap" type="button">Start Quiz</button>
-
-      <a class="leaderboard-link gap" href="./leaderboard/">
-        🏆 View Top 10 Leaderboard
-      </a>
-
+      <a class="leaderboard-link gap" href="./leaderboard/">🏆 View Top 10 Leaderboard</a>
       <button id="adminBtn" class="secondary gap" type="button">Admin Results</button>
 
-      <div class="note">
-        Highest score wins. If scores are tied, the fastest completion time ranks higher.
-      </div>
+      <div class="note">Highest score wins. If scores are tied, the fastest completion time ranks higher.</div>
     </section>
 
     <section id="quizCard" class="card hidden">
       <div class="top">
         <strong id="progress">Question 1 of 10</strong>
-        <div id="timer" class="timer" aria-label="Seconds remaining">60</div>
+        <div id="timer" class="timer">60</div>
       </div>
-
       <h2 id="question" class="question">Question</h2>
       <div id="options" aria-live="polite"></div>
-
       <button id="nextBtn" class="primary gap" type="button" disabled>Next</button>
     </section>
 
     <section id="doneCard" class="card hidden">
-      <div class="completion-icon" aria-hidden="true">✓</div>
+      <div class="completion-icon">✓</div>
       <h1>Mission Complete</h1>
       <p id="doneNote">Your result has been submitted.</p>
-
-      <a class="leaderboard-link gap" href="./leaderboard/">
-        🏆 View Leaderboard
-      </a>
-
+      <a class="leaderboard-link gap" href="./leaderboard/">🏆 View Leaderboard</a>
       <button id="againBtn" class="primary gap" type="button">Try Again</button>
       <button id="doneAdminBtn" class="secondary gap" type="button">Admin Results</button>
     </section>
