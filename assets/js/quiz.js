@@ -62,11 +62,14 @@ console.log("Result saved!");
  qs.forEach(function(q,i){if(answers[i]===q.c)score++});
 
  await saveResult({
-username: username,
-score: score,
-time: Number(elapsed.toFixed(2)),
-submitted_at: new Date().toISOString(),
-timed_out: timedOut
+  quiz_id: "general-quiz-demo-2",
+  username: username,
+  score: score,
+  total_questions: 10,
+  duration_seconds: Math.round(elapsed),
+  timed_out: timedOut,
+  answers: answers,
+  user_agent: navigator.userAgent
 });
 
 el("doneNote").textContent="Result saved for "+username;".";show("doneCard")
