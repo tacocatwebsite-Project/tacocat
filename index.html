@@ -1,184 +1,74 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#07101f">
-
-  <title>TacoCat Chapters 1–10 Quiz</title>
-
-  <link rel="stylesheet" href="./assets/css/quiz.css">
-</head>
-
-<body>
-
-  <img
-    class="corner-logo"
-    src="./assets/images/tacocat-logo.png"
-    alt="TacoCat Crew Logo"
-  >
-
-  <main class="wrap">
-
-    <!-- ========================= -->
-    <!-- START SCREEN -->
-    <!-- ========================= -->
-
-    <section id="startCard" class="card">
-
-      <div class="signal-label">
-        TACO CREW ACADEMY
-      </div>
-
-      <h1>
-        TacoCat Chapters 1–10 Quiz
-      </h1>
-
-      <p class="subtitle">
-        Decode the signal. Complete your mission.
-      </p>
-
-      <div class="mission-stats">
-        <span>⏱ 3 Minutes</span>
-        <span>❓ 10 Random Questions</span>
-        <span>🏆 Highest Score Wins</span>
-      </div>
-
-      <label for="username">
-        Telegram or X Username
-      </label>
-
-      <input
-        id="username"
-        name="username"
-        type="text"
-        minlength="2"
-        maxlength="50"
-        autocomplete="nickname"
-        placeholder="@username"
-      >
-
-      <button
-        id="startBtn"
-        class="primary gap"
-        type="button">
-        🚀 Start Mission
-      </button>
-
-      <a
-        class="leaderboard-link gap"
-        href="./leaderboard/">
-        🏆 View Leaderboard
-      </a>
-
-      <p
-        id="startMessage"
-        class="start-message"
-        aria-live="polite">
-      </p>
-
-      <div class="note">
-
-        • One attempt per username.<br>
-        • 10 random questions from a bank of 25.<br>
-        • Highest score wins.<br>
-        • If scores are tied, the fastest completion time wins.<br>
-        • Leaving the page may automatically end your attempt.
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================= -->
-    <!-- QUIZ -->
-    <!-- ========================= -->
-
-    <section
-      id="quizCard"
-      class="card hidden">
-
-      <div class="top">
-
-        <strong id="progress">
-          Question 1 of 10
-        </strong>
-
-        <div
-          id="timer"
-          class="timer">
-          3:00
-        </div>
-
-      </div>
-
-      <h2
-        id="question"
-        class="question">
-        Question
-      </h2>
-
-      <div
-        id="options"
-        aria-live="polite">
-      </div>
-
-      <button
-        id="nextBtn"
-        class="primary gap"
-        type="button"
-        disabled>
-
-        Next
-
-      </button>
-
-    </section>
-
-
-    <!-- ========================= -->
-    <!-- FINISH -->
-    <!-- ========================= -->
-
-    <section
-      id="doneCard"
-      class="card hidden">
-
-      <div class="completion-icon">
-        🛰️
-      </div>
-
-      <h1
-        id="doneTitle">
-        MISSION COMPLETE
-      </h1>
-
-      <p
-        id="doneNote"
-        class="done-note">
-
-        Transmission received...
-
-      </p>
-
-      <button
-        id="leaderboardBtn"
-        class="primary gap hidden"
-        type="button">
-
-        🏆 View Leaderboard
-
-      </button>
-
-    </section>
-
-  </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <script src="./assets/js/supabase.js"></script>
-
-  <script src="./assets/js/quiz.js"></script>
-
-</body>
-</html>
+:root{
+  --bg:#07101f;
+  --card:rgba(15,25,45,.94);
+  --line:#2b3a60;
+  --text:#f6f8ff;
+  --muted:#aab5d0;
+  --accent:#6de7ba;
+  --accent2:#8b5cf6;
+  --cyan:#22d3ee;
+  --warn:#ff7070;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--text);background:#07101f}
+body{padding:max(18px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom));overflow-x:hidden}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-3;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(82,116,255,.42),transparent 36%),
+    radial-gradient(circle at 20% 80%,rgba(139,92,246,.18),transparent 28%),
+    linear-gradient(180deg,#101d3b 0%,#07101f 58%,#040913 100%);
+}
+.stars,.stars::before,.stars::after{position:fixed;inset:0;content:"";pointer-events:none;z-index:-2;background-repeat:repeat}
+.stars{background-image:radial-gradient(#fff 1px,transparent 1px);background-size:72px 72px;opacity:.22;animation:drift 28s linear infinite}
+.stars::before{background-image:radial-gradient(#8eeaff 1.2px,transparent 1.2px);background-size:113px 113px;opacity:.3;animation:drift 42s linear infinite reverse}
+.stars::after{background-image:radial-gradient(#a78bfa 1px,transparent 1px);background-size:157px 157px;opacity:.22;animation:drift 56s linear infinite}
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.035;background:repeating-linear-gradient(0deg,transparent 0 3px,#fff 4px)}
+@keyframes drift{to{transform:translateY(150px)}}
+.wrap{max-width:760px;margin:auto;position:relative;z-index:1}
+.card{
+  background:var(--card);border:1px solid rgba(109,231,186,.23);border-radius:24px;padding:24px;
+  box-shadow:0 22px 70px rgba(0,0,0,.45),inset 0 0 40px rgba(34,211,238,.025);
+  backdrop-filter:blur(12px);position:relative;overflow:hidden
+}
+.card::before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),var(--accent2),transparent);opacity:.8}
+h1,h2{margin:0 0 10px}h1{font-size:clamp(28px,6vw,46px);line-height:1.05}.subtitle,p{color:var(--muted);line-height:1.55}
+.signal-label{font-size:12px;letter-spacing:.22em;color:var(--cyan);font-weight:900;margin-bottom:12px}
+.transmission-box{margin:20px 0;padding:16px;border:1px solid rgba(34,211,238,.25);border-radius:14px;background:#07111f;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#8fffe0}
+.terminal-line{opacity:0;animation:typeIn .55s ease forwards}.terminal-line.delay-1{animation-delay:.45s}.terminal-line.delay-2{animation-delay:.9s}
+@keyframes typeIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+.mission-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.mission-stats span{padding:12px 8px;border:1px solid var(--line);border-radius:12px;background:#0b1425;text-align:center;font-size:14px;font-weight:800}
+label{display:block;margin:16px 0 8px;font-weight:800}
+input,button{font:inherit}input{width:100%;min-height:52px;border-radius:13px;border:1px solid var(--line);background:#07111f;color:var(--text);padding:13px;font-size:16px;outline:none}
+input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(34,211,238,.12)}
+button{width:100%;min-height:52px;border:0;border-radius:13px;padding:13px 15px;font-weight:900;cursor:pointer;touch-action:manipulation;transition:transform .15s ease,filter .15s ease,box-shadow .15s ease}
+button:active{transform:scale(.985)}button:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:linear-gradient(90deg,var(--accent),#8ff4ce);color:#06140f;box-shadow:0 10px 25px rgba(109,231,186,.15)}
+.primary:hover{filter:brightness(1.06)}
+.leaderboard-link{display:block;text-align:center;color:var(--accent);text-decoration:none;font-weight:900;padding:13px;border:1px solid var(--line);border-radius:13px;background:#0b1425}
+.hidden{display:none!important}.gap{margin-top:12px}
+.note{padding:13px;border:1px solid var(--line);border-radius:13px;background:#0b1425;color:var(--muted);margin:14px 0 0;font-size:14px}
+.start-message{min-height:24px;margin:12px 0 0}.error-note{color:var(--warn)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.timer{font-size:32px;font-weight:950;font-variant-numeric:tabular-nums}.timer.low{color:var(--warn);animation:pulse .8s infinite alternate}
+@keyframes pulse{to{transform:scale(1.06);text-shadow:0 0 18px currentColor}}
+.progress-track{height:9px;background:#07111f;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:16px 0 22px}
+.progress-bar{height:100%;width:10%;background:linear-gradient(90deg,var(--cyan),var(--accent),var(--accent2));transition:width .35s ease}
+.question{font-size:clamp(22px,5vw,31px);line-height:1.3;margin:18px 0}
+.option{margin:9px 0;text-align:left;background:#0b1425;color:var(--text);border:1px solid var(--line);position:relative;overflow:hidden}
+.option:hover{border-color:#4a649b}.option.selected{background:#15392f;border-color:var(--accent);box-shadow:0 0 0 2px rgba(109,231,186,.12)}
+.option.selected::after{content:"✓";position:absolute;right:16px;color:var(--accent);font-weight:950}
+.countdown-card{text-align:center;padding:56px 24px}.countdown-number{font-size:clamp(90px,28vw,180px);font-weight:1000;line-height:1;color:var(--accent);text-shadow:0 0 36px rgba(109,231,186,.48);animation:countPop .75s ease}
+@keyframes countPop{0%{opacity:0;transform:scale(.4)}60%{opacity:1;transform:scale(1.15)}100%{transform:scale(1)}}
+.completion-icon{font-size:54px;margin-bottom:12px}.done-note{white-space:pre-line;color:var(--muted);line-height:1.65}
+.result-card{margin-top:20px;border:1px solid rgba(34,211,238,.3);border-radius:16px;background:#07111f;padding:8px 16px;box-shadow:inset 0 0 28px rgba(34,211,238,.04)}
+.result-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid rgba(43,58,96,.7)}.result-row:last-child{border-bottom:0}.result-row span{color:var(--muted)}.result-row strong{color:var(--accent);text-align:right}
+.sound-toggle{position:fixed;right:14px;top:max(14px,env(safe-area-inset-top));z-index:50;width:auto;min-height:40px;padding:8px 11px;background:rgba(7,17,31,.9);color:var(--text);border:1px solid var(--line);font-size:13px}
+.corner-logo{position:fixed;left:14px;top:max(14px,env(safe-area-inset-top));width:62px;height:62px;object-fit:contain;z-index:30;filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
+.tacocat-confetti{position:fixed;top:-20px;width:10px;height:16px;z-index:9999;pointer-events:none;animation:tacocatConfettiFall 3.6s linear forwards}
+@keyframes tacocatConfettiFall{0%{opacity:1;transform:translateY(-20px) rotate(0deg)}100%{opacity:0;transform:translateY(110vh) rotate(720deg)}}
+@media(max-width:620px){
+  body{padding-top:88px}.card{padding:19px}.mission-stats{grid-template-columns:1fr}.corner-logo{width:54px;height:54px}
+  .sound-toggle{font-size:0}.sound-toggle::after{content:"🔊";font-size:18px}.sound-toggle.muted::after{content:"🔇"}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
