@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TacoCat Quiz Leaderboard</title>
+  <link rel="stylesheet" href="./leaderboard.css">
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="header">
+        <div>
+          <p class="eyebrow">TACOCAT PRACTICE QUIZ</p>
+          <h1>Top Signal Hunters</h1>
+          <p>Highest score wins. Ties are decided by the fastest completion time.</p>
+        </div>
+        <button id="refreshBtn" type="button">Refresh</button>
+      </div>
+
+      <div id="status" class="status" role="status">Loading leaderboard…</div>
+
+      <div class="table-wrap">
+        <table aria-label="TacoCat quiz leaderboard">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Username</th>
+              <th>Score</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardBody"></tbody>
+        </table>
+      </div>
+
+      <a class="back" href="../">← Back to the quiz</a>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="./leaderboard.js"></script>
+</body>
+</html>
