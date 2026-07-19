@@ -3,43 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TacoCat Quiz Leaderboard</title>
-  <link rel="stylesheet" href="./leaderboard.css">
+  <title>TacoCat Practice Quiz</title>
+  <link rel="stylesheet" href="./assets/css/quiz.css">
 </head>
 <body>
   <main class="wrap">
-    <section class="card">
-      <div class="header">
-        <div>
-          <p class="eyebrow">TACOCAT PRACTICE QUIZ</p>
-          <h1>Top Signal Hunters</h1>
-          <p>Highest score wins. Ties are decided by the fastest completion time.</p>
-        </div>
-        <button id="refreshBtn" type="button">Refresh</button>
+    <section id="startCard" class="card">
+      <h1>TacoCat Practice Quiz</h1>
+      <p>Answer 10 questions before the 60-second timer ends.</p>
+
+      <label for="username">Username</label>
+      <input id="username" type="text" minlength="2" maxlength="50" placeholder="Enter your username">
+
+      <button id="startBtn" type="button">Start Quiz</button>
+      <a href="./leaderboard/">View Top 10 Leaderboard</a>
+      <button id="adminBtn" type="button">Admin Results</button>
+    </section>
+
+    <section id="quizCard" class="card hidden">
+      <div class="top">
+        <strong id="progress">Question 1 of 10</strong>
+        <div id="timer">60</div>
       </div>
 
-      <div id="status" class="status" role="status">Loading leaderboard…</div>
+      <h2 id="question"></h2>
+      <div id="options"></div>
+      <button id="nextBtn" type="button" disabled>Next</button>
+    </section>
 
-      <div class="table-wrap">
-        <table aria-label="TacoCat quiz leaderboard">
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Username</th>
-              <th>Score</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody id="leaderboardBody"></tbody>
-        </table>
-      </div>
+    <section id="doneCard" class="card hidden">
+      <h1>Mission Complete</h1>
+      <p id="doneNote">Your result has been submitted.</p>
 
-      <a class="back" href="../">← Back to the quiz</a>
+      <a href="./leaderboard/">View Leaderboard</a>
+      <button id="againBtn" type="button">Try Again</button>
+      <button id="doneAdminBtn" type="button">Admin Results</button>
     </section>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="../assets/js/supabase.js"></script>
-  <script src="./leaderboard.js"></script>
+  <script src="./assets/js/supabase.js"></script>
+  <script src="./assets/js/quiz.js"></script>
 </body>
 </html>
