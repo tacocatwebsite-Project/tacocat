@@ -4,56 +4,181 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#07101f">
-  <title>TacoCat Practice Quiz</title>
+
+  <title>TacoCat Chapters 1–10 Quiz</title>
+
   <link rel="stylesheet" href="./assets/css/quiz.css">
 </head>
+
 <body>
-  <img class="corner-logo" src="./assets/images/tacocat-logo.png" alt="TacoCat Crew logo">
+
+  <img
+    class="corner-logo"
+    src="./assets/images/tacocat-logo.png"
+    alt="TacoCat Crew Logo"
+  >
 
   <main class="wrap">
+
+    <!-- ========================= -->
+    <!-- START SCREEN -->
+    <!-- ========================= -->
+
     <section id="startCard" class="card">
-      <div class="signal-label">TACO CREW ACADEMY</div>
-      <h1>TacoCat Practice Quiz</h1>
-      <p class="subtitle">Can you become the #1 Signal Hunter?</p>
+
+      <div class="signal-label">
+        TACO CREW ACADEMY
+      </div>
+
+      <h1>
+        TacoCat Chapters 1–10 Quiz
+      </h1>
+
+      <p class="subtitle">
+        Decode the signal. Complete your mission.
+      </p>
 
       <div class="mission-stats">
-        <span>⏱ ⏱ 3 Minutes</span>
-        <span>❓ 10 Questions</span>
-        <span>🏆 Top Score Wins</span>
+        <span>⏱ 3 Minutes</span>
+        <span>❓ 10 Random Questions</span>
+        <span>🏆 Highest Score Wins</span>
       </div>
 
-      <label for="username">Username</label>
-      <input id="username" name="username" type="text" minlength="2" maxlength="50" autocomplete="nickname" placeholder="Enter your username">
+      <label for="username">
+        Telegram or X Username
+      </label>
 
-      <button id="startBtn" class="primary gap" type="button">Start Quiz</button>
-      <a class="leaderboard-link gap" href="./leaderboard/">🏆 View Top 10 Leaderboard</a>
-      <button id="adminBtn" class="secondary gap" type="button">Admin Results</button>
+      <input
+        id="username"
+        name="username"
+        type="text"
+        minlength="2"
+        maxlength="50"
+        autocomplete="nickname"
+        placeholder="@username"
+      >
 
-      <div class="note">Highest score wins. If scores are tied, the fastest completion time ranks higher.</div>
+      <button
+        id="startBtn"
+        class="primary gap"
+        type="button">
+        🚀 Start Mission
+      </button>
+
+      <a
+        class="leaderboard-link gap"
+        href="./leaderboard/">
+        🏆 View Leaderboard
+      </a>
+
+      <p
+        id="startMessage"
+        class="start-message"
+        aria-live="polite">
+      </p>
+
+      <div class="note">
+
+        • One attempt per username.<br>
+        • 10 random questions from a bank of 25.<br>
+        • Highest score wins.<br>
+        • If scores are tied, the fastest completion time wins.<br>
+        • Leaving the page may automatically end your attempt.
+
+      </div>
+
     </section>
 
-    <section id="quizCard" class="card hidden">
+
+    <!-- ========================= -->
+    <!-- QUIZ -->
+    <!-- ========================= -->
+
+    <section
+      id="quizCard"
+      class="card hidden">
+
       <div class="top">
-        <strong id="progress">Question 1 of 10</strong>
-        <div id="timer">3:00</div>
+
+        <strong id="progress">
+          Question 1 of 10
+        </strong>
+
+        <div
+          id="timer"
+          class="timer">
+          3:00
+        </div>
+
       </div>
-      <h2 id="question" class="question">Question</h2>
-      <div id="options" aria-live="polite"></div>
-      <button id="nextBtn" class="primary gap" type="button" disabled>Next</button>
+
+      <h2
+        id="question"
+        class="question">
+        Question
+      </h2>
+
+      <div
+        id="options"
+        aria-live="polite">
+      </div>
+
+      <button
+        id="nextBtn"
+        class="primary gap"
+        type="button"
+        disabled>
+
+        Next
+
+      </button>
+
     </section>
 
-    <section id="doneCard" class="card hidden">
-      <div class="completion-icon">✓</div>
-      <h1>Mission Complete</h1>
-      <p id="doneNote">Your result has been submitted.</p>
-      <a class="leaderboard-link gap" href="./leaderboard/">🏆 View Leaderboard</a>
-      <button id="againBtn" class="primary gap" type="button">Try Again</button>
-      <button id="doneAdminBtn" class="secondary gap" type="button">Admin Results</button>
+
+    <!-- ========================= -->
+    <!-- FINISH -->
+    <!-- ========================= -->
+
+    <section
+      id="doneCard"
+      class="card hidden">
+
+      <div class="completion-icon">
+        🛰️
+      </div>
+
+      <h1
+        id="doneTitle">
+        MISSION COMPLETE
+      </h1>
+
+      <p
+        id="doneNote"
+        class="done-note">
+
+        Transmission received...
+
+      </p>
+
+      <button
+        id="leaderboardBtn"
+        class="primary gap hidden"
+        type="button">
+
+        🏆 View Leaderboard
+
+      </button>
+
     </section>
+
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script src="./assets/js/supabase.js"></script>
+
   <script src="./assets/js/quiz.js"></script>
+
 </body>
 </html>
