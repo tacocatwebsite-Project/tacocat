@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const QUIZ_ID = "general-quiz-demo-2";
+  const QUIZ_ID = "tacocat-chapters-1-10-2026";
   const LIMIT = 10;
 
   const body = document.getElementById("leaderboardBody");
